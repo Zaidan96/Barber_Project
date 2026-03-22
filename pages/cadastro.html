@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadastro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="login-box">
+
+    <h2>Criar Conta</h2>
+
+    <form id="cadastroForm">
+
+      <!-- Nome + Sobrenome -->
+      <div class="row">
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Nome" required>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Sobrenome" required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <i class="fa fa-envelope"></i>
+        <input type="email" placeholder="Email" required>
+      </div>
+
+      <!-- WhatsApp -->
+      <!--<div class="input-group">
+        <i class="fab fa-whatsapp"></i>
+        <input type="text" placeholder="WhatsApp" required>
+      </div>-->
+
+      <div class="input-group">
+        <i class="fab fa-whatsapp"></i>
+        <input 
+          type="text" 
+          id="whatsapp"
+          placeholder="whatsapp"
+          maxlength="15"
+          required>
+      </div>
+
+      <!-- Data de nascimento -->
+      <div class="input-group">
+        <i class="fa fa-calendar"></i>
+        <input type="text" id="dataNascimento" placeholder="Data de Nascimento" readonly required>
+      </div>
+
+      <!-- Senha -->
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="senha1" placeholder="Senha" required>
+      </div>
+
+      <!-- Confirmar senha -->
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="senha2" placeholder="Confirmar senha" required>
+      </div>
+
+      <p id="erroSenha" style="color:red; display:none;">As senhas não coincidem</p>
+
+      <button>Cadastrar</button>
+
+      <div class="register">
+        <a href="../index.html">Voltar</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
+<script>
+// VALIDAÇÃO DE SENHA
+document.getElementById("cadastroForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const s1 = document.getElementById("senha1").value;
+  const s2 = document.getElementById("senha2").value;
+  const erro = document.getElementById("erroSenha");
+
+  if(s1 !== s2){
+    erro.style.display = "block";
+  } else {
+    erro.style.display = "none";
+    alert("Cadastro realizado com sucesso!");
+  }
+});
+
+// CALENDÁRIO
+flatpickr("#dataNascimento", {
+  dateFormat: "d/m/Y",
+  locale: "pt",
+  maxDate: "today"
+});
+</script>
+
+<script src="../js/script.js"></script>
+</body>
+
+</body>
+</html>

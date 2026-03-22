@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Barbearia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="login-box">
+
+    <h2>💈 Barbearia</h2>
+    <p>Bem-vindo de volta</p>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" id="usuario" placeholder="Usuário" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" id="senha" placeholder="Senha" required>
+      </div>
+
+      <div class="options">
+        <a href="#">Esqueci minha senha</a>
+      </div>
+
+      <button>Entrar</button>
+
+      <div class="register">
+        <p>Não tem conta?</p>
+        <a href="pages/cadastro.html">Cadastrar novo usuário</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- apenas botao teste dps apagar entrar em modo teste -->
+
+<button type="button" id="btnTeste">Entrar em modo teste</button>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const user = document.getElementById("usuario").value;
+  const pass = document.getElementById("senha").value;
+
+  if(user === "admin" && pass === "123"){
+    alert("Login OK");
+  } else {
+    alert("Usuário ou senha incorretos");
+  }
+});
+
+// BOTÃO DE TESTE (depois vou apagar e sop teste)
+document.getElementById("btnTeste").addEventListener("click", function(){
+  window.location.href = "pages/agendamento.html";
+});
+
+
+</script>
+
+</body>
+</html>

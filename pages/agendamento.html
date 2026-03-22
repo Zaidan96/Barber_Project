@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Cliente</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Seu CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="cliente-system-body">
+
+  <main class="cliente-system" id="agendamentoPage">
+
+    <!-- =========================================================
+         MENU LATERAL
+         ========================================================= -->
+    <aside class="cliente-sidebar">
+
+      <!-- Marca do salão -->
+      <div class="sidebar-brand">
+        <div class="brand-icon">💈</div>
+        <div>
+          <h2 id="nomeSalaoSidebar">Barbearia Elite</h2>
+          <p>Área do cliente</p>
+        </div>
+      </div>
+
+      <!-- Menu -->
+      <nav class="sidebar-menu">
+        <button class="menu-item ativo" data-aba="agendar">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Agendar horário</span>
+        </button>
+
+        <button class="menu-item" data-aba="meusAgendamentos">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Meus agendamentos</span>
+        </button>
+
+        <button class="menu-item" data-aba="servicos">
+          <i class="fa-solid fa-scissors"></i>
+          <span>Serviços</span>
+        </button>
+      </nav>
+
+      <!-- Rodapé da sidebar com botão sair -->
+        <div class="sidebar-bottom-actions">
+        <button type="button" id="btnSairSistema" class="menu-item menu-item-sair">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Sair</span>
+        </button>
+        </div>
+    </aside>
+
+    <!-- =========================================================
+         CONTEÚDO PRINCIPAL
+         ========================================================= -->
+    <section class="cliente-content">
+
+      <!-- TOPO -->
+      <header class="cliente-topbar">
+        <div class="topbar-left">
+          <h1 id="nomeSalaoTopo">Barbearia Elite</h1>
+
+          <!-- Funcionamento em chips compactos -->
+          <div id="funcionamentoChips" class="funcionamento-chips"></div>
+        </div>
+
+        <!-- Manual compacto bonito -->
+        <div class="manual-inline" id="manualInlineAgendar">
+          <div class="manual-inline-item">
+            <span>1</span>
+            <p>Escolha o serviço</p>
+          </div>
+
+          <div class="manual-inline-item">
+            <span>2</span>
+            <p>Escolha o barbeiro</p>
+          </div>
+
+          <div class="manual-inline-item">
+            <span>3</span>
+            <p>Selecione o horário</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- =========================================================
+           ABA AGENDAR
+           ========================================================= -->
+      <section class="cliente-aba ativa" id="aba-agendar">
+
+        <!-- PASSO 1 - SERVIÇOS -->
+        <div class="system-card compact-card">
+          <div class="card-header-system compacto">
+            <div>
+              <h2>1. Escolha o serviço</h2>
+            </div>
+
+            <div class="carousel-controls">
+              <button type="button" id="btnServicosPrev" class="carousel-btn-small">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <button type="button" id="btnServicosNext" class="carousel-btn-small">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="servicosAgendamento" class="carousel-compacto"></div>
+        </div>
+
+        <!-- PASSO 2 - BARBEIROS -->
+        <div class="system-card compact-card">
+          <div class="card-header-system compacto">
+            <div>
+              <h2>2. Escolha o barbeiro</h2>
+            </div>
+
+            <div class="carousel-controls">
+              <button type="button" id="btnBarbeirosPrev" class="carousel-btn-small">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <button type="button" id="btnBarbeirosNext" class="carousel-btn-small">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="barbeirosSistema" class="carousel-compacto"></div>
+        </div>
+
+        <!-- PASSO 3 - AGENDA -->
+        <div class="system-card compact-card">
+          <div class="card-header-system compacto">
+            <div>
+              <h2>3. Escolha o horário</h2>
+            </div>
+          </div>
+
+          <div class="agenda-topo-compacto">
+            <div class="campo-sistema">
+              <label for="dataAgendamento">Selecione a data</label>
+              <input type="date" id="dataAgendamento">
+            </div>
+
+            <div class="agenda-info-mini">
+              <span>Barbeiro selecionado</span>
+              <strong id="barbeiroAgendaLabel">Nenhum selecionado</strong>
+            </div>
+          </div>
+
+          <div id="mensagemAgenda" class="mensagem-agenda-sistema">
+            Primeiro, escolha um serviço. Depois selecione o barbeiro para abrir a agenda.
+          </div>
+
+          <div id="horariosSistema" class="horarios-grid-system compacto"></div>
+        </div>
+
+        <!-- RESUMO FINAL BONITO -->
+        <div class="system-card resumo-final-card" id="resumoAgendarCard">
+          <div class="resumo-final-header">
+            <div>
+              <h2>Resumo do seu agendamento</h2>
+              <p>Confira tudo antes de confirmar</p>
+            </div>
+          </div>
+
+          <div class="resumo-final-grid">
+            <div class="resumo-final-item">
+              <span>Serviço</span>
+              <strong id="resumoServico">Não selecionado</strong>
+            </div>
+
+            <div class="resumo-final-item">
+              <span>Barbeiro</span>
+              <strong id="resumoBarbeiro">Não selecionado</strong>
+            </div>
+
+            <div class="resumo-final-item">
+              <span>Data</span>
+              <strong id="resumoData">Não selecionada</strong>
+            </div>
+
+            <div class="resumo-final-item">
+              <span>Horário</span>
+              <strong id="resumoHorario">Não selecionado</strong>
+            </div>
+
+            <div class="resumo-final-item">
+              <span>Duração</span>
+              <strong id="resumoTempo">--</strong>
+            </div>
+
+            <div class="resumo-final-item destaque">
+              <span>Valor</span>
+              <strong id="resumoPreco">R$ 0,00</strong>
+            </div>
+          </div>
+
+          <div class="resumo-final-status" id="resumoStatusMensagem">
+            Preencha as etapas acima para finalizar seu agendamento.
+          </div>
+
+          <button id="btnAgendar" class="btn-system-primary">
+            Confirmar agendamento
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ABA MEUS AGENDAMENTOS
+           ========================================================= -->
+      <section class="cliente-aba" id="aba-meusAgendamentos">
+        <div class="system-card">
+          <div class="card-header-system">
+            <div>
+              <h2>Meus agendamentos</h2>
+            </div>
+          </div>
+
+          <div id="listaMeusAgendamentos" class="lista-agendamentos-cliente"></div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ABA SERVIÇOS
+           ========================================================= -->
+      <section class="cliente-aba" id="aba-servicos">
+        <div class="system-card">
+          <div class="card-header-system">
+            <div>
+              <h2>Serviços disponíveis</h2>
+            </div>
+          </div>
+
+          <div id="catalogoServicos" class="catalogo-servicos-grid"></div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
